@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Break</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+  <h1>Timer</h1>
+
+  <div id="tHrs" class="tDisplay">0</div>h :
+  <div id="tMin" class="tDisplay">0</div>m :
+  <div id="tSec" class="tDisplay">0</div>s
+  <select id="selMode">
+	  <option value="0">5s-5s</option>
+	  <option value="1">20m-30s</option>
+	  <option value="2">60m-5s</option>
+	  <!-- <option value="3">Custom</option> -->
+	</select>
+  <br /><br />
+
+  <button id="btnStart">Start</button>
+  <button id="btnStop">Stop</button>
+  <button id="btnPause">Pause</button>
+	<br />
+  <button id="btnReset">Reset</button>
+
+</body>
+	<script type="text/javascript" src="timer.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+</html>
