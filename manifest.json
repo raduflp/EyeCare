@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Break",
+  "version": "1",
+  "permissions": [
+    "notifications", "fullscreen"],
+  "app": {
+    "background": {
+      "scripts": ["app.js"]
+    }
+  },
+  "minimum_chrome_version": "23"
+
+}
