@@ -3,30 +3,49 @@
 <head>
   <meta charset="utf-8">
   <title>Break</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="flat-ui/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="flat-ui/css/flat-ui.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
+  <div class="container">
+      <h3 class="work">Break</h3>
 
-  <h1>Timer</h1>
+      <div id="tHrs" class="tDisplay">0</div>h :
+      <div id="tMin" class="tDisplay">0</div>m :
+      <div id="tSec" class="tDisplay">0</div>s
+      <select id="selMode" name="modelist" class="select-block">
+          <option value="0">5s-5s</option>
+          <option value="1">20m-30s</option>
+          <option value="2">60m-5m</option>
+          <!-- <option value="3">Custom</option> -->
+      </select>
+      <br />
 
-  <div id="tHrs" class="tDisplay">0</div>h :
-  <div id="tMin" class="tDisplay">0</div>m :
-  <div id="tSec" class="tDisplay">0</div>s
-  <select id="selMode">
-	  <option value="0">5s-5s</option>
-	  <option value="1">20m-30s</option>
-	  <option value="2">60m-5s</option>
-	  <!-- <option value="3">Custom</option> -->
-	</select>
-  <br /><br />
-
-  <button id="btnStart">Start</button>
-  <button id="btnStop">Stop</button>
-  <button id="btnPause">Pause</button>
-	<br />
-  <button id="btnReset">Reset</button>
+      <button id="btnStart">Start</button>
+      <!--<button id="btnStop">Stop</button>-->
+    <!--  <button id="btnPause">Pause</button>
+        <br />-->
+      <button id="btnReset">Reset</button>
+      <br>
+      <br>
+      <button id="btnBreak">Take a Break >></button>
+      <br>
+      <br>
+      <h4>Remind me in:</h4>
+      <button id="btnRemind2">2 min</button>
+      <button id="btnRemind5">5 min</button>
+      <button id="btnSkip">Skip</button>
+  </div>
 
 </body>
+    <script src="flat-ui/js/jquery-1.8.3.min.js"></script>
+    <script src="flat-ui/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="flat-ui/js/bootstrap.min.js"></script>
+    <script src="flat-ui/js/bootstrap-select.js"></script>
+
+    <script src="flat-ui/js/application.js"></script>
+
 	<script type="text/javascript" src="js/timer.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 </html>

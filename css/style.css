@@ -1,0 +1,25 @@
+
+.tDisplay{
+	display: inline-block;
+}
+
+.workLayout{
+	color: #545454;
+	background: #ECF0F1;
+}
+
+
+.restLayout{
+	color: #F7F7F7;
+	background: #111;
+}
+
+.reminderLayout{
+}
+
+
+.workLayout .rest,
+.reminderLayout .rest,
+.restLayout .work {
+	display: none;
+}
