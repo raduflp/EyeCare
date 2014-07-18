@@ -1,38 +1,81 @@
 // Helper functions
-$ = function(selector) { return document.querySelector(selector); }
+//$ = function(selector) { return document.querySelector(selector); }
+
+//$ = jQuery;
 
 REMINDER_INTERVAL = 10;
+
+$currentMode = $('.pager .selected');
+console.log("current mode: " + $currentMode.attr('val'));
+
 
 mode = new Mode();
 mode.setMode();
 
 timer = new Timer();
 timer.init(mode.work, updateClock, startReminder);
+setTheme('initLayout');
 
 notId = 0;
 
-$('#selMode').onchange = function(e) { mode.setMode(); timer.init(mode.work, updateClock, startReminder); };
-$('#btnStart').onclick = function(e) { timer.start(); };
+/* Mode carousel functions */
+$('#prevMode').click(function(e) {
+    var $prevMode = $currentMode.prev('.item');
+    if ($prevMode.size() == 0){
+            $prevMode = $('.pager li.item').last();
+        }
+    console.log("prev mode: " + $prevMode.val());
+    $currentMode.removeClass('selected');
+    $prevMode.addClass('selected');
+    $currentMode = $prevMode;
+    $currentMode.class
+});
+$('#nextMode').click(function(e) {
+    var $nextMode = $currentMode.next('.item');
+    if ($nextMode.size() == 0){
+        $nextMode = $('.pager li.item').first();
+    }
+    console.log("next mode: " + $nextMode.val());
+    $currentMode.removeClass('selected');
+    $nextMode.addClass('selected');
+    $currentMode = $nextMode;
+});
+
+
+
+$('#selMode').change(function(e) {
+    console.log("lalalal");
+    mode.setMode(); timer.init(mode.work, updateClock, startReminder); });
+
+
+
+
+
+
+$('#btnStart').click(function(e) { timer.start(); });
 /*$('#btnStop').onclick = function(e) { timer.stop(); };*/
 /*$('#btnPause').onclick = function(e) { timer.pause(); };*/
-$('#btnReset').onclick = function(e) { timer.init(mode.work, updateClock, startReminder); updateClock(mode.work);};
+$('#btnReset').click(function(e) {
+    timer.init(mode.work, updateClock, startReminder);
+    updateClock(mode.work);
+    setTheme('initLayout');
+});
 
-$('#btnBreak').onclick = function(e) { startRest(); };
-$('#btnSkip').onclick = function(e) { startWork(); };
-$('#btnRemind2').onclick = function(e) { startReminder(120); };
-$('#btnRemind5').onclick = function(e) { startReminder(300); };
+$('#btnBreak').click(function(e) { startRest(); });
+$('#btnSkip').click(function(e) { startWork(); });
+$('#btnRemind2').click(function(e) { startReminder(120); });
+$('#btnRemind5').click(function(e) { startReminder(300); });
 
 
 
 
-// Modes
+/*======== Modes ========*/
 function Mode(){
 	this.work = 2;
 	this.rest = 1;
 
 	this.setMode = function(){
-		var e = $("#selMode");
-		var m = e.options[e.selectedIndex].value;
+		var m = $('#selMode').val();
 
 		if (m < 0 || m > 3){
 			console.log("ERROR! Unknown mode " + m);
@@ -57,6 +100,8 @@ function Mode(){
 	};
 
 };
+
+/*=========================*/
 
 
 /*===== Notifications =====*/
@@ -122,7 +167,7 @@ function updateStartStopButtons(tMode){
 }
 /*===========================*/
 
-/*===== Mode functions =====*/
+/*===== Work, Rest, Reminder functions =====*/
 
 function startWork(){
     console.log("Work Started! Duration: " + mode.work);

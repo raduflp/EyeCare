@@ -1,11 +1,42 @@
 
+.pager{
+    width: 100%;
+}
+
+.pager li.previous a{
+    border-right: 2px solid #2c3e50;
+}
+
+.pager li.item{
+    padding-top: 7px;
+    display: none;
+}
+
+.pager li.item.selected{
+    display: inline-block;
+}
+
+
+
+
+
+.header{
+    background: #CCCCCC;
+}
+
 .tDisplay{
 	display: inline-block;
 }
 
+
+
+.initLayout{
+    background: #E8E8E8;
+}
+
 .workLayout{
 	color: #545454;
-	background: #ECF0F1;
+	background: #D2E8C8;
 }
 
 
@@ -15,11 +46,18 @@
 }
 
 .reminderLayout{
+    color: #545454;
+	background: #EDD9D8;
 }
 
 
 .workLayout .rest,
+.workLayout .remind,
+.initLayout .rest,
+.initLayout .remind,
 .reminderLayout .rest,
-.restLayout .work {
+.restLayout .work,
+.restLayout .remind
+{
 	display: none;
 }

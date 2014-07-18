@@ -9,18 +9,51 @@
 </head>
 <body>
   <div class="container">
-      <h3 class="work">Break</h3>
+      <div class="row header">
+          <div class="col-xs-3">
+              <span class="work">Break</span>
+          </div>
+          <div class="col-xs-9">
+              <div class="btn-toolbar">
+                  <div class="btn-group">
+                      <a class="btn btn-inverse" href="#">About</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-xs-12">
+              <ul class="pager">
+                  <li class="previous"><a id="prevMode" href="#"><span class="fui-arrow-left"></span></a></li>
+                  <li value="0" class="item selected">Select Mode</li>
+                  <li value="201" class="item">20m Work, 1m Rest</li>
+                  <li value="303" class="item">30m Work, 3m Rest</li>
+                  <li value="605" class="item">60m Work, 5m Rest</li>
+                  <li class="next"><a id="nextMode" href="#"><span class="fui-arrow-right"></span></a></li>
+              </ul>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-xs-5">
 
-      <div id="tHrs" class="tDisplay">0</div>h :
-      <div id="tMin" class="tDisplay">0</div>m :
-      <div id="tSec" class="tDisplay">0</div>s
-      <select id="selMode" name="modelist" class="select-block">
-          <option value="0">5s-5s</option>
-          <option value="1">20m-30s</option>
-          <option value="2">60m-5m</option>
-          <!-- <option value="3">Custom</option> -->
-      </select>
-      <br />
+          </div>
+          <div class="col-xs-7">
+              <select id="selMode" name="modelist" class="select-block">
+                  <option value="0">5s-5s</option>
+                  <option value="1">20m-30s</option>
+                  <option value="2">60m-5m</option>
+                  <!-- <option value="3">Custom</option> -->
+              </select>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-xs-12">
+              <div id="tHrs" class="tDisplay">0</div>h :
+              <div id="tMin" class="tDisplay">0</div>m :
+              <div id="tSec" class="tDisplay">0</div>s
+          </div>
+      </div>
+
 
       <button id="btnStart">Start</button>
       <!--<button id="btnStop">Stop</button>-->
@@ -29,13 +62,16 @@
       <button id="btnReset">Reset</button>
       <br>
       <br>
-      <button id="btnBreak">Take a Break >></button>
-      <br>
-      <br>
-      <h4>Remind me in:</h4>
-      <button id="btnRemind2">2 min</button>
-      <button id="btnRemind5">5 min</button>
-      <button id="btnSkip">Skip</button>
+      <div class="remind">
+          <button id="btnBreak">Take a Break >></button>
+          <br>
+          <br>
+          <h4>Remind me in:</h4>
+          <button id="btnRemind2">2 min</button>
+          <button id="btnRemind5">5 min</button>
+          <button id="btnSkip">Skip</button>
+      </div>
+
   </div>
 
 </body>
