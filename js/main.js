@@ -1,8 +1,4 @@
-// Helper functions
-//$ = function(selector) { return document.querySelector(selector); }
-
-//$ = jQuery;
-
+// The interval at which the reminding notifications are displayed
 REMINDER_INTERVAL = 10;
 
 $currentMode = $('.pager .selected');
@@ -46,8 +42,6 @@ $('#nextMode').click(function(e) {
 
 
 $('#btnStart').click(function(e) { timer.start(); });
-/*$('#btnStop').onclick = function(e) { timer.stop(); };*/
-/*$('#btnPause').onclick = function(e) { timer.pause(); };*/
 $('#btnReset').click(function(e) {
     timer.init(mode.work, updateClock, startReminder);
     updateClock(mode.work);
