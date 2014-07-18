@@ -24,32 +24,25 @@ $('#prevMode').click(function(e) {
     if ($prevMode.size() == 0){
             $prevMode = $('.pager li.item').last();
         }
-    console.log("prev mode: " + $prevMode.val());
     $currentMode.removeClass('selected');
     $prevMode.addClass('selected');
     $currentMode = $prevMode;
-    $currentMode.class
+    mode.setMode();
+    timer.init(mode.work, updateClock, startReminder);
+/*    console.log("prev mode: " + $prevMode.val());*/
 });
 $('#nextMode').click(function(e) {
     var $nextMode = $currentMode.next('.item');
     if ($nextMode.size() == 0){
         $nextMode = $('.pager li.item').first();
     }
-    console.log("next mode: " + $nextMode.val());
     $currentMode.removeClass('selected');
     $nextMode.addClass('selected');
     $currentMode = $nextMode;
+    mode.setMode();
+    timer.init(mode.work, updateClock, startReminder);
+/*    console.log("next mode: " + $nextMode.val());*/
 });
-
-
-
-$('#selMode').change(function(e) {
-    console.log("lalalal");
-    mode.setMode(); timer.init(mode.work, updateClock, startReminder); });
-
-
-
-
 
 
 $('#btnStart').click(function(e) { timer.start(); });
@@ -75,26 +68,25 @@ function Mode(){
 	this.rest = 1;
 
 	this.setMode = function(){
-		var m = $('#selMode').val();
-
-		if (m < 0 || m > 3){
-			console.log("ERROR! Unknown mode " + m);
-			m = 1;
-		};
+		var m = $currentMode.val();
 
 		if (m == 0){
 			this.work = 5;
 			this.rest = 5;
-		} else if (m == 1){
+		} else if (m == 201){
 			this.work = 1200;
-			this.rest = 30;
-		} else if (m == 2) {
-			this.work = 3600;
-			this.rest = 300;
-		} else if (m == 3) {
-			this.work = workPeriod;
-			this.rest = restPeriod;
-		};
+			this.rest = 60;
+		} else if (m == 303) {
+			this.work = 1800;
+			this.rest = 180;
+		} else if (m == 605) {
+            this.work = 3600;
+            this.rest = 300;
+		} else {
+		    console.log("ERROR! Unknown mode " + m);
+            this.work = 60;
+            this.rest = 60;
+		}
 
 		updateClock(mode.work);
 	};
@@ -148,9 +140,7 @@ function updateClock(seconds) {
     var dMinutes = Math.floor(seconds/60) % 60;
     var dHours = Math.floor(seconds/3600);
 
-    $('#tHrs').innerHTML = dHours;
-    $('#tMin').innerHTML = dMinutes;
-    $('#tSec').innerHTML = dSeconds;
+    $('#tClock').html(dHours + "h : " + dMinutes + "m : " + dSeconds + "s");
 };
 
 function updateStartStopButtons(tMode){

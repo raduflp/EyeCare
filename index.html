@@ -25,40 +25,22 @@
           <div class="col-xs-12">
               <ul class="pager">
                   <li class="previous"><a id="prevMode" href="#"><span class="fui-arrow-left"></span></a></li>
-                  <li value="0" class="item selected">Select Mode</li>
-                  <li value="201" class="item">20m Work, 1m Rest</li>
-                  <li value="303" class="item">30m Work, 3m Rest</li>
-                  <li value="605" class="item">60m Work, 5m Rest</li>
+                  <li value="0" class="item selected">5s Work / 5s Rest</li>
+                  <li value="201" class="item">20m Work / 1m Rest</li>
+                  <li value="303" class="item">30m Work / 3m Rest</li>
+                  <li value="605" class="item">60m Work / 5m Rest</li>
                   <li class="next"><a id="nextMode" href="#"><span class="fui-arrow-right"></span></a></li>
               </ul>
           </div>
       </div>
       <div class="row">
-          <div class="col-xs-5">
-
-          </div>
-          <div class="col-xs-7">
-              <select id="selMode" name="modelist" class="select-block">
-                  <option value="0">5s-5s</option>
-                  <option value="1">20m-30s</option>
-                  <option value="2">60m-5m</option>
-                  <!-- <option value="3">Custom</option> -->
-              </select>
-          </div>
-      </div>
-      <div class="row">
           <div class="col-xs-12">
-              <div id="tHrs" class="tDisplay">0</div>h :
-              <div id="tMin" class="tDisplay">0</div>m :
-              <div id="tSec" class="tDisplay">0</div>s
+              <div id="tClock" class="tDisplay">0h : 0m : 0s</div>
           </div>
       </div>
 
 
       <button id="btnStart">Start</button>
-      <!--<button id="btnStop">Stop</button>-->
-    <!--  <button id="btnPause">Pause</button>
-        <br />-->
       <button id="btnReset">Reset</button>
       <br>
       <br>
