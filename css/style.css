@@ -1,23 +1,4 @@
 
-.pager{
-    width: 100%;
-}
-
-.pager li.previous a{
-    border-right: 2px solid #2c3e50;
-}
-
-.pager li.item{
-    padding-top: 7px;
-    display: none;
-}
-
-.pager li.item.selected{
-    display: inline-block;
-}
-
-
-
 
 
 .header{
@@ -25,39 +6,121 @@
 }
 
 .tDisplay{
-	display: inline-block;
+    font: 900 50px/50px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 35px 0;
+}
+
+.break-title{
+    margin: 3px 0;
+    font: 900 24px/24px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 
 
+/* Initial Layout styles */
 .initLayout{
     background: #E8E8E8;
 }
+    .initLayout .tDisplay{
+        font: 900 32px/40px "Helvetica Neue", Helvetica, Arial, sans-serif;
+        margin: 4px 0px 10px 0px;
+    }
 
+    /* Mode Selector Styles */
+    .pager{
+        width: 100%;
+        margin: 15px 0;
+    }
+
+    .pager li.previous a{
+        border-right: 2px solid #2c3e50;
+    }
+
+    .pager li.item{
+        padding-top: 7px;
+        display: none;
+    }
+
+    .pager li.item.selected{
+        display: inline-block;
+    }
+
+
+/* Work Layout styles */
 .workLayout{
 	color: #545454;
-	background: #D2E8C8;
+	background: #E2FAB7;
 }
 
-
-.restLayout{
-	color: #F7F7F7;
-	background: #111;
-}
-
+/* Reminder Layout styles */
 .reminderLayout{
     color: #545454;
-	background: #EDD9D8;
+	background: #FFC0C0;
 }
 
+    div.row.break-remind{
+         margin-top: 3px;
+     }
 
-.workLayout .rest,
-.workLayout .remind,
-.initLayout .rest,
-.initLayout .remind,
-.reminderLayout .rest,
-.restLayout .work,
-.restLayout .remind
+    .break-title-remind{
+        display: inline-block;
+        padding-right: 4px;
+        font: 600 15px/18px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+/* Rest Layout styles */
+.restLayout{
+	color: #222;
+	background: #111;
+}
+    .restLayout .container{
+        width: 100%;
+    }
+
+    .restLayout  .col-xs-12{
+        padding: 0px;
+        position: absolute;
+        height: 100%;
+    }
+
+    .restLayout .tDisplay{
+        display: block;
+        position: absolute;
+        width: 100%;
+        top: 40%;
+    }
+
+    .restLayout .btn-inverse{
+        background-color: #333;
+        color: #000;
+        position: absolute;
+        top: 55%;
+        left: 48%;
+    }
+
+
+
+
+
+
+
+/* Elements' visibility control */
+.initLayout .break-work,
+.initLayout .break-remind,
+.initLayout .break-rest,
+
+.workLayout .break-init,
+.workLayout .break-remind,
+.workLayout .break-rest,
+
+.reminderLayout .break-init,
+.reminderLayout .break-work,
+.reminderLayout .break-rest,
+
+.restLayout .break-init,
+.restLayout .break-work,
+.restLayout .break-remind,
+.restLayout .row.header
 {
 	display: none;
 }

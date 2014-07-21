@@ -1,8 +1,8 @@
 // The interval at which the reminding notifications are displayed
-REMINDER_INTERVAL = 10;
+REMINDER_INTERVAL = 30;
 
 $currentMode = $('.pager .selected');
-console.log("current mode: " + $currentMode.attr('val'));
+console.log("current mode: " + $currentMode.val());
 
 
 mode = new Mode();
@@ -41,15 +41,16 @@ $('#nextMode').click(function(e) {
 });
 
 
-$('#btnStart').click(function(e) { timer.start(); });
+$('#btnStart').click(function(e) {
+    startWork();
+});
 $('#btnReset').click(function(e) {
-    timer.init(mode.work, updateClock, startReminder);
-    updateClock(mode.work);
-    setTheme('initLayout');
+    resetToInit();
 });
 
 $('#btnBreak').click(function(e) { startRest(); });
 $('#btnSkip').click(function(e) { startWork(); });
+$('#btnSkipRest').click(function(e) { stopRest(); });
 $('#btnRemind2').click(function(e) { startReminder(120); });
 $('#btnRemind5').click(function(e) { startReminder(300); });
 
@@ -66,7 +67,7 @@ function Mode(){
 
 		if (m == 0){
 			this.work = 5;
-			this.rest = 5;
+			this.rest = 500;
 		} else if (m == 201){
 			this.work = 1200;
 			this.rest = 60;
@@ -114,7 +115,7 @@ function notificationBtnClick(notID, btnID) {
 	if (btnID == 0){
 		startRest();
 	} else if (btnID == 1){
-		startReminder(10);
+		startReminder(120);
 	}
 
 }
@@ -126,7 +127,7 @@ function creationCallback(notID) {
 
 /*===== Interface utils =====*/
 function setTheme(layoutClass) {
-    $('body').className = layoutClass;
+    $('body').attr( "class", layoutClass );
 };
 
 function updateClock(seconds) {
@@ -134,10 +135,15 @@ function updateClock(seconds) {
     var dMinutes = Math.floor(seconds/60) % 60;
     var dHours = Math.floor(seconds/3600);
 
-    $('#tClock').html(dHours + "h : " + dMinutes + "m : " + dSeconds + "s");
+    if (dHours < 10) { dHours = "0" + dHours; }
+    if (dMinutes < 10) { dMinutes = "0" + dMinutes; }
+    if (dSeconds < 10) { dSeconds = "0" + dSeconds; }
+
+
+    $('#tClock').html(dHours + " : " + dMinutes + " : " + dSeconds + "s");
 };
 
-function updateStartStopButtons(tMode){
+/*function updateStartStopButtons(tMode){
 	if (tMode == 'work'){
 		$('#btnStart').style.visibility = 'hidden';
 		$('#btnStop').style.visibility = 'visible';
@@ -148,13 +154,21 @@ function updateStartStopButtons(tMode){
 		$('#btnStart').style.visibility = 'visible';
 		$('#btnStop').style.visibility = 'hidden';
 	}
-}
+}*/
 /*===========================*/
 
 /*===== Work, Rest, Reminder functions =====*/
 
+function resetToInit(){
+    setTheme('initLayout');
+    updateClock(mode.work);
+    timer.init(mode.work, updateClock, startReminder);
+}
+
 function startWork(){
+    setTheme('workLayout');
     console.log("Work Started! Duration: " + mode.work);
+    updateClock(mode.work);
     timer.init(mode.work, updateClock, startReminder);
     timer.start();
 };
@@ -170,22 +184,23 @@ function startRest(){
 
 function stopRest(){
     console.log("Rest finished");
-    setTheme('workLayout');
-    chrome.app.window.current().restore();
     startWork();
+    chrome.app.window.current().restore();
 };
 
 
 function startReminder(duration){
     // case for the automatic reminder when a notification is ignored
+    setTheme('reminderLayout');
     if (duration == null) {
         duration = REMINDER_INTERVAL;
         notify();
+        timer.init(duration, null, startReminder);
+    } else {
+        updateClock(duration);
+        timer.init(duration, updateClock, startReminder);
     }
     console.log("Reminder started for " + duration + " seconds");
-    setTheme('reminderLayout');
-    updateClock(duration);
-    timer.init(duration, updateClock, startReminder);
     timer.start();
 }
 

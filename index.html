@@ -11,18 +11,17 @@
   <div class="container">
       <div class="row header">
           <div class="col-xs-3">
-              <span class="work">Break</span>
+              <div class="break-title">Break</div>
           </div>
-          <div class="col-xs-9">
-              <div class="btn-toolbar">
-                  <div class="btn-group">
-                      <a class="btn btn-inverse" href="#">About</a>
-                  </div>
-              </div>
+          <div class="col-xs-9 text-right">
+
+              <!--<a id="bkSettings" class="btn btn-inverse" href="#"><span class="fui-gear"></span></a>-->
+
           </div>
       </div>
-      <div class="row">
-          <div class="col-xs-12">
+      <div class="row break-init">
+          <div class="col-xs-1"></div>
+          <div class="col-xs-10">
               <ul class="pager">
                   <li class="previous"><a id="prevMode" href="#"><span class="fui-arrow-left"></span></a></li>
                   <li value="0" class="item selected">5s Work / 5s Rest</li>
@@ -32,27 +31,33 @@
                   <li class="next"><a id="nextMode" href="#"><span class="fui-arrow-right"></span></a></li>
               </ul>
           </div>
+          <div class="col-xs-1"></div>
       </div>
-      <div class="row">
+      <div class="row text-center">
           <div class="col-xs-12">
-              <div id="tClock" class="tDisplay">0h : 0m : 0s</div>
+              <div id="tClock" class="tDisplay">00 : 00 : 00s</div>
+              <a id="btnSkipRest" href="#" class="btn btn-xs btn-inverse break-rest">Skip</a>
           </div>
       </div>
-
-      <button id="btnStart">Start</button>
-      <button id="btnReset">Reset</button>
-      <br>
-      <br>
-      <div class="remind">
-          <button id="btnBreak">Take a Break >></button>
-          <br>
-          <br>
-          <h4>Remind me in:</h4>
-          <button id="btnRemind2">2 min</button>
-          <button id="btnRemind5">5 min</button>
-          <button id="btnSkip">Skip</button>
+      <div class="row text-center">
+          <div class="col-xs-1"></div>
+          <div class="col-xs-10">
+              <a id="btnStart" href="#" class="btn btn-block btn-lg btn-success break-init">Start</a>
+              <a id="btnReset" href="#" class="btn btn-block btn-lg btn-danger break-work">Reset</a>
+              <a id="btnBreak" href="#" class="btn btn-block btn-lg btn-success break-remind">Take a Break >></a>
+          </div>
+          <div class="col-xs-1"></div>
       </div>
 
+      <div class="row text-center break-remind">
+          <div class="col-xs-12">
+              <div class="break-title-remind">Remind me in </div>
+
+              <a id="btnRemind2" href="#" class="btn btn-xs btn-info">2 min</a>
+              <a id="btnRemind5" href="#" class="btn btn-xs btn-info">5 min</a>
+              <a id="btnSkip" href="#" class="btn btn-xs btn-default">Skip</a>
+          </div>
+      </div>
   </div>
 
 </body>
