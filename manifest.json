@@ -1,7 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "Break",
+  "name": "Eye Care",
   "version": "1",
+  "author": "Radu Filip",
+  "offline_enabled": true,
   "permissions": [
     "notifications", "fullscreen"],
   "app": {
@@ -9,6 +11,9 @@
       "scripts": ["app.js"]
     }
   },
+  "icons": { "16": "/images/icon16.png",
+             "48": "/images/icon48.png",
+            "128": "/images/icon128.png" },
   "minimum_chrome_version": "23"
 
 }

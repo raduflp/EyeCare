@@ -2,24 +2,23 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Break</title>
+  <title>Eye Care</title>
   <link href="flat-ui/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="flat-ui/css/flat-ui.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
+  <div class="frame">
+      <div class="ec-title">Eye Care</div>
+      <a href="#" id="window-minimize" title="Minimize">&#48;</a>
+      <a href="#" id="window-close" title="Close">&#114;</a>
+  </div>
+
+  <div class="header text-right">
+      <a id="bkSettings" href="#"><span class="fui-gear"></span></a>
+  </div>
   <div class="container">
-      <div class="row header">
-          <div class="col-xs-3">
-              <div class="break-title">Break</div>
-          </div>
-          <div class="col-xs-9 text-right">
-
-              <!--<a id="bkSettings" class="btn btn-inverse" href="#"><span class="fui-gear"></span></a>-->
-
-          </div>
-      </div>
-      <div class="row break-init">
+      <div class="row ec-init">
           <div class="col-xs-1"></div>
           <div class="col-xs-10">
               <ul class="pager">
@@ -36,22 +35,22 @@
       <div class="row text-center">
           <div class="col-xs-12">
               <div id="tClock" class="tDisplay">00 : 00 : 00s</div>
-              <a id="btnSkipRest" href="#" class="btn btn-xs btn-inverse break-rest">Skip</a>
+              <a id="btnSkipRest" href="#" class="btn btn-xs btn-inverse ec-rest">Skip</a>
           </div>
       </div>
       <div class="row text-center">
           <div class="col-xs-1"></div>
           <div class="col-xs-10">
-              <a id="btnStart" href="#" class="btn btn-block btn-lg btn-success break-init">Start</a>
-              <a id="btnReset" href="#" class="btn btn-block btn-lg btn-danger break-work">Reset</a>
-              <a id="btnBreak" href="#" class="btn btn-block btn-lg btn-success break-remind">Take a Break >></a>
+              <a id="btnStart" href="#" class="btn btn-block btn-lg btn-success ec-init">Start</a>
+              <a id="btnReset" href="#" class="btn btn-block btn-lg btn-danger ec-work">Reset</a>
+              <a id="btnBreak" href="#" class="btn btn-block btn-lg btn-success ec-remind">Take a Break >></a>
           </div>
           <div class="col-xs-1"></div>
       </div>
 
-      <div class="row text-center break-remind">
+      <div class="row text-center ec-remind">
           <div class="col-xs-12">
-              <div class="break-title-remind">Remind me in </div>
+              <div class="ec-title-remind">Remind me in </div>
 
               <a id="btnRemind2" href="#" class="btn btn-xs btn-info">2 min</a>
               <a id="btnRemind5" href="#" class="btn btn-xs btn-info">5 min</a>
@@ -68,6 +67,7 @@
 
     <script src="flat-ui/js/application.js"></script>
 
+    <script type="text/javascript" src="js/frame.js"></script>
 	<script type="text/javascript" src="js/timer.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 </html>

@@ -1,39 +1,127 @@
 
 
+.frame {
+    -webkit-app-region: drag;
+    height: 25px;
+    position: fixed;
+    width: 100%;
+    background-color: #344459;
+    font-family: Webdings;
+    text-align: right;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+    .frame a {
+        -webkit-app-region: no-drag;
+        color: #9f9f9f;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+        height: 100%;
+        width: 28px;
+        margin: 0;
+        padding-top: 2px;
+    }
+
+        .frame a:hover {
+            color: gray;
+            background-color: #485F73;
+            cursor: default;
+        }
+
+    .frame .ec-title{
+        margin-top: -2px;
+        margin-left: 6px;
+        float: left;
+        font-family: Lato, Helvetica, Arial, sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+    }
+
+#window-close {
+    width: 48px;
+    color: #FFFFFF;
+    background-color: #C75050;
+}
+#window-close:hover {
+    background-color: #E04343;
+}
+
+#window-minimize{
+    color: #CCCCCC;
+    width: 24px;
+    transform: scale(1.5,1);
+    margin-right: 2px;
+}
+#window-minimize:hover{
+    color: #FFFFFF;
+    background-color: #485F73; /*#3665B3;*/
+}
+
+.container
+{
+    margin-top: 25px;
+}
+
+
+
+
+body{
+    background: #D8D8C8;
+}
+
 
 .header{
-    background: #CCCCCC;
+    margin: 25px 5px 0 0;
+    float: right;
+    font-size: 16px;
 }
+
+    .header a{
+        color: #344459;
+    }
+
+    .header a:hover{
+        color: #485F73;
+    }
+
 
 .tDisplay{
-    font: 900 50px/50px "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin: 35px 0;
+    font: 900 55px/55px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-top: 10px;
+    margin-bottom: 27px;
 }
 
-.break-title{
-    margin: 3px 0;
-    font: 900 24px/24px "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
+/* Custom FlatUI */
 
-
-
-/* Initial Layout styles */
-.initLayout{
-    background: #E8E8E8;
-}
-    .initLayout .tDisplay{
-        font: 900 32px/40px "Helvetica Neue", Helvetica, Arial, sans-serif;
-        margin: 4px 0px 10px 0px;
+    .btn-success{
+        background-color: #70A758;
+    }
+    .btn-success:hover{
+        background-color: #7DBA62;
     }
 
     /* Mode Selector Styles */
     .pager{
         width: 100%;
-        margin: 15px 0;
+        margin-top: 25px;
+        margin-bottom: 5px;
+        background-color: #E27A3F;
+    }
+
+    .pager li a{
+        border-left: 2px solid #D36729;
+    }
+
+    .pager li a:hover{
+        background-color: #D36729;
     }
 
     .pager li.previous a{
-        border-right: 2px solid #2c3e50;
+        border-right: 2px solid #D36729;
     }
 
     .pager li.item{
@@ -46,23 +134,35 @@
     }
 
 
+
+/* Initial Layout styles */
+.initLayout{
+
+}
+    .initLayout .tDisplay{
+        font: 900 32px/40px "Helvetica Neue", Helvetica, Arial, sans-serif;
+        margin: 4px 0px 10px 0px;
+    }
+
+
+
 /* Work Layout styles */
 .workLayout{
 	color: #545454;
-	background: #E2FAB7;
+/*	background: #E2FAB7;*/
 }
 
 /* Reminder Layout styles */
 .reminderLayout{
     color: #545454;
-	background: #FFC0C0;
+/*	background: #FFC0C0;*/
 }
 
-    div.row.break-remind{
+    div.row.ec-remind{
          margin-top: 3px;
      }
 
-    .break-title-remind{
+    .ec-title-remind{
         display: inline-block;
         padding-right: 4px;
         font: 600 15px/18px "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -105,22 +205,23 @@
 
 
 /* Elements' visibility control */
-.initLayout .break-work,
-.initLayout .break-remind,
-.initLayout .break-rest,
+.initLayout .ec-work,
+.initLayout .ec-remind,
+.initLayout .ec-rest,
 
-.workLayout .break-init,
-.workLayout .break-remind,
-.workLayout .break-rest,
+.workLayout .ec-init,
+.workLayout .ec-remind,
+.workLayout .ec-rest,
 
-.reminderLayout .break-init,
-.reminderLayout .break-work,
-.reminderLayout .break-rest,
+.reminderLayout .ec-init,
+.reminderLayout .ec-work,
+.reminderLayout .ec-rest,
 
-.restLayout .break-init,
-.restLayout .break-work,
-.restLayout .break-remind,
-.restLayout .row.header
+.restLayout .ec-init,
+.restLayout .ec-work,
+.restLayout .ec-remind,
+.restLayout .header,
+.restLayout .frame
 {
 	display: none;
 }

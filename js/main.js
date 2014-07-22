@@ -4,7 +4,7 @@ REMINDER_INTERVAL = 30;
 $currentMode = $('.pager .selected');
 console.log("current mode: " + $currentMode.val());
 
-
+var isMinimized;
 mode = new Mode();
 mode.setMode();
 
@@ -67,7 +67,7 @@ function Mode(){
 
 		if (m == 0){
 			this.work = 5;
-			this.rest = 500;
+			this.rest = 5;
 		} else if (m == 201){
 			this.work = 1200;
 			this.rest = 60;
@@ -175,6 +175,8 @@ function startWork(){
 
 function startRest(){
     console.log("Rest Started! Duration: " + mode.rest);
+    isMinimized = chrome.app.window.current().isMinimized();
+    chrome.app.window.current().focus();
     setTheme('restLayout');
     updateClock(mode.rest);
     timer.init(mode.rest, updateClock, stopRest);
@@ -186,12 +188,15 @@ function stopRest(){
     console.log("Rest finished");
     startWork();
     chrome.app.window.current().restore();
+    if (isMinimized){ chrome.app.window.current().minimize() }
 };
 
 
 function startReminder(duration){
     // case for the automatic reminder when a notification is ignored
     setTheme('reminderLayout');
+    /*chrome.app.window.current().resizeTo(400, 265);*/
+
     if (duration == null) {
         duration = REMINDER_INTERVAL;
         notify();
