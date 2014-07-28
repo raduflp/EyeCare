@@ -9,15 +9,25 @@
 </head>
 <body>
   <div class="frame">
-      <div class="ec-title">Eye Care</div>
+      <div class="ec-title"><img class="logo-small" src="images/logo72_yellow.png"/>
+          Eye Care</div>
       <a href="#" id="window-minimize" title="Minimize">&#48;</a>
       <a href="#" id="window-close" title="Close">&#114;</a>
   </div>
 
-  <div class="header text-right">
-      <a id="bkSettings" href="#"><span class="fui-gear"></span></a>
+  <div class="ec-settings dropdown">
+      
+      <a id="btnSettings" href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fui-gear"></span></a>
+      <span class="dropdown-arrow"></span>
+      <ul class="dropdown-menu dropdown-inverse">
+          <li><a id="btnMenuReset" href="#">Reset Timer</a></li>
+          <li class="divider"></li>
+          <li><a id="btnMenuHome" href="#">Home</a></li>
+          <!--<li><a href="#">Exercises</a></li>-->
+          <li><a id="btnMenuAbout" href="#">About</a></li>
+      </ul>
   </div>
-  <div class="container">
+  <div class="ec-scr-home container">
       <div class="row ec-init">
           <div class="col-xs-1"></div>
           <div class="col-xs-10">
@@ -57,6 +67,22 @@
               <a id="btnSkip" href="#" class="btn btn-xs btn-default">Skip</a>
           </div>
       </div>
+  </div>
+  <div class="ec-scr-about container">
+    <div class="ec-back"><a id="btnAboutBack" class="ec-btnBack" href="#"><span class="fui-arrow-left"></span></a></div>
+    <div class="row text-center">
+      <div class="col-xs-12">
+        
+        <div class="ec-page-title">About</div>
+        <p><strong>Eye Care</strong> helps you maintain a healthy lifestyle when working long hours in front of the screen. Regular breaks combined with eye exercises and moderate movement are crucial to prevent eyestrain, backpain and other health issues. <a id="hrefMayo1" href="#">more...</a></p>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-xs-12">
+          <div class="ec-copyright">Designed and Developed by <a id="hrefGithub1" href="#">Radu Filip</a></div>
+      </div>
+    </div>
+    <div class="ec-version">v1.0</div>
   </div>
 
 </body>

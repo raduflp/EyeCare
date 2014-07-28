@@ -1,5 +1,3 @@
-
-
 .frame {
     -webkit-app-region: drag;
     height: 25px;
@@ -33,12 +31,19 @@
 
     .frame .ec-title{
         margin-top: -2px;
-        margin-left: 6px;
+        margin-left: 3px;
         float: left;
         font-family: Lato, Helvetica, Arial, sans-serif;
         font-size: 18px;
         font-weight: bold;
         color: white;
+    }
+
+
+    .logo-small {
+        height: 23px;
+        width: 23px;
+        margin: 0 5px 3px 0;
     }
 
 #window-close {
@@ -61,38 +66,78 @@
     background-color: #485F73; /*#3665B3;*/
 }
 
-.container
-{
+.container {
     margin-top: 25px;
 }
 
 
 
 
-body{
+body {
     background: #D8D8C8;
+    min-height: 235px;
 }
 
-
-.header{
-    margin: 25px 5px 0 0;
-    float: right;
+p {
     font-size: 16px;
+    line-height: 1.5;
 }
 
-    .header a{
+.ec-settings{
+    position: absolute;
+    top: 25px;
+    right: 5px;
+    z-index: 1;
+}
+
+.ec-back {
+    position: absolute;
+    top: 25px;
+    left: 3px;
+    z-index: 1;
+}
+
+    .ec-settings a,
+    .ec-back a {
         color: #344459;
     }
 
-    .header a:hover{
+    .ec-settings a:hover,
+    .ec-back a:hover {
         color: #485F73;
     }
+
+.ec-page-title {
+    margin: 8px 0 6px;
+    font: bold 18px/18px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.ec-copyright {
+    margin-top: 22px;
+    font: bold 14px/14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+    .ec-copyright a {
+        color: #428bca;
+    }
+
+    .ec-copyright a:hover {
+        color: #2a6496;
+    }
+
+.ec-version {
+    position: absolute;
+    bottom: 3px;
+    right: 5px;
+    font: bold 11px/11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 
 
 .tDisplay{
     font: 900 55px/55px "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin-top: 10px;
+    margin-top: 38px;
     margin-bottom: 27px;
+    transition: font 0.25s;
 }
 
 /* Custom FlatUI */
@@ -109,19 +154,26 @@ body{
         width: 100%;
         margin-top: 25px;
         margin-bottom: 5px;
-        background-color: #E27A3F;
+        /* background-color: #E27A3F; */
+        /* background-color: #524549; */
+        /* background-color: #704A5B; */
+        background-color: #A16983;
+        /* background-color: #C38F30; */
+        /* background-color: #2978AD; */
+        /* background-color: #2C3E50; */
     }
 
     .pager li a{
-        border-left: 2px solid #D36729;
+        /*border-left: 2px solid #D36729;*/
+        border-left: 2px solid #B38E9F;
     }
 
     .pager li a:hover{
-        background-color: #D36729;
+        background-color: #B38E9F;
     }
 
     .pager li.previous a{
-        border-right: 2px solid #D36729;
+        border-right: 2px solid #B38E9F;
     }
 
     .pager li.item{
@@ -132,6 +184,51 @@ body{
     .pager li.item.selected{
         display: inline-block;
     }
+
+
+   /* .dropdown {
+      position: absolute;
+    }*/
+
+    .dropdown-arrow {
+        margin-top: 7px;
+        right: 13px;
+        top: 0%;
+
+        border-width: 8px 0px 8px 10px;
+        border-color: transparent transparent transparent #34495e; 
+    }
+
+    .open .dropdown-arrow {
+        right: 23px;
+        margin-top: 7px;
+        opacity: 0.85;
+    }
+    
+    .dropdown-inverse {
+        background: rgba(52, 73, 94, 0.85);
+    }
+
+    .dropdown-inverse li > a:hover{
+        background: rgba(44, 62, 80, 0.85);
+    }
+
+    .dropdown-menu {
+        margin-left: -165px;
+        margin-top: -25px !important;
+        border-radius: 6px 0px 6px 6px !important;
+    }
+    
+    .dropdown-menu > li {
+        text-align: right;
+    }
+
+    .open .dropdown-menu {
+        margin-left: -175px;
+        margin-top: -25px !important;
+    }
+
+
 
 
 
@@ -199,12 +296,10 @@ body{
     }
 
 
-
-
-
-
-
 /* Elements' visibility control */
+
+.ec-scr-about,
+
 .initLayout .ec-work,
 .initLayout .ec-remind,
 .initLayout .ec-rest,
@@ -220,7 +315,7 @@ body{
 .restLayout .ec-init,
 .restLayout .ec-work,
 .restLayout .ec-remind,
-.restLayout .header,
+.restLayout .ec-settings,
 .restLayout .frame
 {
 	display: none;

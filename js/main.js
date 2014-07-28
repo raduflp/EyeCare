@@ -14,6 +14,30 @@ setTheme('initLayout');
 
 notId = 0;
 
+
+$('#btnMenuReset').click(function(e) {
+    resetToInit();
+    goToScreen('home');
+});
+$('#btnMenuHome').click(function(e) {
+    goToScreen('home');
+});
+$('#btnMenuAbout').click(function(e) {
+    goToScreen('about');
+});
+$('#btnAboutBack').click(function(e) {
+    goToScreen('home');
+});
+
+$('#hrefMayo1').click(function(e) {
+    window.open('http://www.mayoclinic.org/diseases-conditions/eyestrain/basics/prevention/con-20032649');
+});
+
+$('#hrefGithub1').click(function(e) {
+    window.open('https://github.com/RaduFi');
+});
+
+
 /* Mode carousel functions */
 $('#prevMode').click(function(e) {
     var $prevMode = $currentMode.prev('.item');
@@ -47,6 +71,7 @@ $('#btnStart').click(function(e) {
 $('#btnReset').click(function(e) {
     resetToInit();
 });
+
 
 $('#btnBreak').click(function(e) { startRest(); });
 $('#btnSkip').click(function(e) { startWork(); });
@@ -130,6 +155,12 @@ function setTheme(layoutClass) {
     $('body').attr( "class", layoutClass );
 };
 
+function goToScreen(screen){
+    $('.ec-scr-home').hide();
+    $('.ec-scr-about').hide();
+    $('.ec-scr-' + screen).show();
+}
+
 function updateClock(seconds) {
     var dSeconds = seconds % 60;
     var dMinutes = Math.floor(seconds/60) % 60;
@@ -175,6 +206,7 @@ function startWork(){
 
 function startRest(){
     console.log("Rest Started! Duration: " + mode.rest);
+    goToScreen('home');
     isMinimized = chrome.app.window.current().isMinimized();
     chrome.app.window.current().focus();
     setTheme('restLayout');

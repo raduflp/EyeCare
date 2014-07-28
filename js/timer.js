@@ -52,7 +52,7 @@ var Timer = function(){
       return;
     }
 
-    console.log("tick time = ", thisObj.time);
+/*    console.log("tick time = ", thisObj.time);*/
 
     thisObj.time--;
     thisObj.tickCB(thisObj.time);
@@ -72,11 +72,13 @@ var Timer = function(){
   }
 
 
+/*
   this.pause = function(){
     thisObj.isRunning = false;
     clearInterval(thisObj.timerId);
 
     console.log("timer paused at ", thisObj.time);
   }
+*/
 
 }
