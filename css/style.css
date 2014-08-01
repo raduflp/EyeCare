@@ -36,11 +36,11 @@
         font-family: Lato, Helvetica, Arial, sans-serif;
         font-size: 18px;
         font-weight: bold;
-        color: white;
+        color: #EFECE3;
     }
 
 
-    .logo-small {
+    .icon-small {
         height: 23px;
         width: 23px;
         margin: 0 5px 3px 0;
@@ -74,13 +74,16 @@
 
 
 body {
-    background: #D8D8C8;
+/*    background: #D8D8C8;*/
+/*    background: #E2E2E2;*/
+    background: #EFECE3;
     min-height: 235px;
 }
 
 p {
     font-size: 16px;
-    line-height: 1.5;
+    line-height: 1.4;
+    margin-bottom: 20px;
 }
 
 .ec-settings{
@@ -113,8 +116,8 @@ p {
 }
 
 .ec-copyright {
-    margin-top: 22px;
-    font: bold 14px/14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-top: 29px;
+    font: italic 14px/14px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
     .ec-copyright a {
@@ -127,9 +130,12 @@ p {
 
 .ec-version {
     position: absolute;
-    bottom: 3px;
-    right: 5px;
-    font: bold 11px/11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    top: -25px;
+    left: 113px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Lato, Helvetica, Arial, sans-serif;
+    color: #EFECE3;
 }
 
 
@@ -185,11 +191,7 @@ p {
         display: inline-block;
     }
 
-
-   /* .dropdown {
-      position: absolute;
-    }*/
-
+    /* Settings Dropdown Styles */
     .dropdown-arrow {
         margin-top: 7px;
         right: 13px;
@@ -228,6 +230,16 @@ p {
         margin-top: -25px !important;
     }
 
+
+        .ec-sound-on,
+        .ec-sound-off {
+          font-size: 13px;
+          margin-left: 6px;
+        }
+
+        .ec-sound-off {
+          display: none;
+        }
 
 
 

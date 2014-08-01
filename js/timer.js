@@ -29,12 +29,12 @@ var Timer = function(){
 
     thisObj.isRunning = false;
 
-    console.log("timer initialized with time ", thisObj.time)
+/*    console.log("timer initialized with time ", thisObj.time)*/
   };
 
   this.start = function(){
     thisObj.isRunning = true;
-    console.log("timer started at ", thisObj.time);
+/*    console.log("timer started at ", thisObj.time);*/
 
     if (thisObj.time > 0){
       thisObj.timerId = setInterval(
@@ -48,7 +48,7 @@ var Timer = function(){
 
   this.tick = function(){
     if (!thisObj.isRunning){
-      console.log("ERROR: Cannot tick while stopped");
+      console.error("ERROR: Cannot tick while stopped");
       return;
     }
 
@@ -68,7 +68,7 @@ var Timer = function(){
     thisObj.time = 0;
     clearInterval(thisObj.timerId);
 
-    console.log("timer stopped");
+/*    console.log("timer stopped");*/
   }
 
 

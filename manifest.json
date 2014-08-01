@@ -1,9 +1,10 @@
 {
   "manifest_version": 2,
   "name": "Eye Care",
-  "version": "1",
+  "version": "1.0.1",
   "author": "Radu Filip",
   "offline_enabled": true,
+  "description": "An app that helps you maintain a healthy lifestyle when working long hours in front of the screen",
   "permissions": [
     "notifications", "fullscreen"],
   "app": {
@@ -15,5 +16,4 @@
              "48": "/images/icon48.png",
             "128": "/images/icon128.png" },
   "minimum_chrome_version": "23"
-
 }

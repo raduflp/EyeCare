@@ -1,8 +1,9 @@
 // The interval at which the reminding notifications are displayed
-REMINDER_INTERVAL = 30;
+/*REMINDER_INTERVAL = 45;*/
+REMINDER_INTERVAL = 10;
+soundsON = true;
 
 $currentMode = $('.pager .selected');
-console.log("current mode: " + $currentMode.val());
 
 var isMinimized;
 mode = new Mode();
@@ -12,13 +13,25 @@ timer = new Timer();
 timer.init(mode.work, updateClock, startReminder);
 setTheme('initLayout');
 
-notId = 0;
+notId = 1;
 
 
 $('#btnMenuReset').click(function(e) {
     resetToInit();
     goToScreen('home');
 });
+$('#btnMenuSounds').click(function(e) {
+    if (soundsON) {
+      soundsON = false;
+      $('.ec-sound-on').hide();
+      $('.ec-sound-off').show();
+    } else {
+      soundsON = true;
+      $('.ec-sound-off').hide();
+      $('.ec-sound-on').show();
+    }
+});
+
 $('#btnMenuHome').click(function(e) {
     goToScreen('home');
 });
@@ -61,7 +74,6 @@ $('#nextMode').click(function(e) {
     $currentMode = $nextMode;
     mode.setMode();
     timer.init(mode.work, updateClock, startReminder);
-/*    console.log("next mode: " + $nextMode.val());*/
 });
 
 
@@ -81,7 +93,6 @@ $('#btnRemind5').click(function(e) { startReminder(300); });
 
 
 
-
 /*======== Modes ========*/
 function Mode(){
 	this.work = 2;
@@ -93,7 +104,9 @@ function Mode(){
 		if (m == 0){
 			this.work = 5;
 			this.rest = 5;
-		} else if (m == 201){
+		} else 
+        
+        if (m == 201){
 			this.work = 1200;
 			this.rest = 60;
 		} else if (m == 303) {
@@ -103,7 +116,7 @@ function Mode(){
             this.work = 3600;
             this.rest = 300;
 		} else {
-		    console.log("ERROR! Unknown mode " + m);
+		    console.error("ERROR! Unknown mode " + m);
             this.work = 60;
             this.rest = 60;
 		}
@@ -117,8 +130,6 @@ function Mode(){
 
 
 /*===== Notifications =====*/
-chrome.notifications.onButtonClicked.addListener(notificationBtnClick);
-
 function notify(){
 
     var opt = {
@@ -131,12 +142,16 @@ function notify(){
 	opt.buttons = [];
 	opt.buttons.push({ title: 'Take a break' });
 	opt.buttons.push({ title: 'In a few minutes' });
-
-    chrome.notifications.create('id' + notId++, opt, creationCallback)
+    
+    chrome.notifications.clear('ec' + (notId - 1), clearCallback);
+    chrome.notifications.create('ec' + notId++, opt, creationCallback);
+    if (soundsON){ $('#audioNotif').trigger('play'); }
 }
 
+chrome.notifications.onButtonClicked.addListener(notificationBtnClick);
+
 function notificationBtnClick(notID, btnID) {
-	console.log("The notification '" + notID + "' had button " + btnID + " clicked");
+/*	console.log("The notification '" + notID + "' had button " + btnID + " clicked");*/
 	if (btnID == 0){
 		startRest();
 	} else if (btnID == 1){
@@ -145,12 +160,17 @@ function notificationBtnClick(notID, btnID) {
 
 }
 
-function creationCallback(notID) {
-    console.log("Succesfully created " + notID + " notification");
+function creationCallback(id) {
+/*    console.log("Succesfully created " + id + " notification");*/
+}
+
+function clearCallback(wasCleared) {
+/*    console.log("Previous Notification cleared? " + wasCleared);*/
 }
 /*===========================*/
 
 /*===== Interface utils =====*/
+
 function setTheme(layoutClass) {
     $('body').attr( "class", layoutClass );
 };
@@ -170,22 +190,8 @@ function updateClock(seconds) {
     if (dMinutes < 10) { dMinutes = "0" + dMinutes; }
     if (dSeconds < 10) { dSeconds = "0" + dSeconds; }
 
-
     $('#tClock').html(dHours + " : " + dMinutes + " : " + dSeconds + "s");
 };
-
-/*function updateStartStopButtons(tMode){
-	if (tMode == 'work'){
-		$('#btnStart').style.visibility = 'hidden';
-		$('#btnStop').style.visibility = 'visible';
-	} else if (tMode == 'remind'){
-		$('#btnStart').style.visibility = 'hidden';
-		$('#btnStop').style.visibility = 'visible';
-	} else {
-		$('#btnStart').style.visibility = 'visible';
-		$('#btnStop').style.visibility = 'hidden';
-	}
-}*/
 /*===========================*/
 
 /*===== Work, Rest, Reminder functions =====*/
@@ -198,14 +204,14 @@ function resetToInit(){
 
 function startWork(){
     setTheme('workLayout');
-    console.log("Work Started! Duration: " + mode.work);
+/*    console.log("Work Started! Duration: " + mode.work);*/
     updateClock(mode.work);
     timer.init(mode.work, updateClock, startReminder);
     timer.start();
 };
 
 function startRest(){
-    console.log("Rest Started! Duration: " + mode.rest);
+/*    console.log("Rest Started! Duration: " + mode.rest);*/
     goToScreen('home');
     isMinimized = chrome.app.window.current().isMinimized();
     chrome.app.window.current().focus();
@@ -217,17 +223,17 @@ function startRest(){
 };
 
 function stopRest(){
-    console.log("Rest finished");
+/*    console.log("Rest finished");*/
     startWork();
     chrome.app.window.current().restore();
     if (isMinimized){ chrome.app.window.current().minimize() }
+    if (soundsON){ $('#audioResume').trigger('play'); }
 };
 
 
 function startReminder(duration){
     // case for the automatic reminder when a notification is ignored
     setTheme('reminderLayout');
-    /*chrome.app.window.current().resizeTo(400, 265);*/
 
     if (duration == null) {
         duration = REMINDER_INTERVAL;
@@ -237,7 +243,7 @@ function startReminder(duration){
         updateClock(duration);
         timer.init(duration, updateClock, startReminder);
     }
-    console.log("Reminder started for " + duration + " seconds");
+/*    console.log("Reminder started for " + duration + " seconds");*/
     timer.start();
 }
 
