@@ -1,20 +1,25 @@
 // The interval at which the reminding notifications are displayed
 /*REMINDER_INTERVAL = 45;*/
-REMINDER_INTERVAL = 10;
-soundsON = true;
+var REMINDER_INTERVAL = 10;
+var INIT = "init", WORK = "work", REST = "rest", REMIND = "reminder"; 
 
-$currentMode = $('.pager .selected');
-
+var soundsON = true;
 var isMinimized;
-mode = new Mode();
+var notId = 1;
+var currentState; 
+
+var customWork, customRest;
+var $currentMode = $('.pager .selected');
+var $inputWork = $('#inputWork');
+var $inputRest = $('#inputRest');
+
+var mode = new Mode();
 mode.setMode();
 
-timer = new Timer();
+var timer = new Timer();
 timer.init(mode.work, updateClock, startReminder);
-setTheme('initLayout');
 
-notId = 1;
-
+updateCurrentState(INIT);
 
 $('#btnMenuReset').click(function(e) {
     resetToInit();
@@ -77,8 +82,98 @@ $('#nextMode').click(function(e) {
 });
 
 
+// Custom Mode UI
+$('#btnWorkMinus').click(function() {
+    var workVal = Number($inputWork.val());
+    if (isNaN(workVal) || workVal <= 1) {
+        console.log("special case minus");
+        $inputWork.val(1);
+    } else if (workVal < 6){
+        $inputWork.val(workVal - 1);
+    } else {
+        if (workVal % 5 == 0) { $inputWork.val(workVal - 5); }
+        else { $inputWork.val(workVal - (workVal % 5)); }
+    }
+});
+
+$('#btnWorkPlus').click(function() {
+    var workVal = Number($inputWork.val());
+    if (isNaN(workVal)) {
+        console.log("special case plus");
+        $inputWork.val(1);
+    } else if (workVal < 3596){
+        $inputWork.val(workVal - (workVal % 5) + 5);
+    } else {
+        $inputWork.val(3600);
+    }
+});
+
+$('#btnRestMinus').click(function() {
+    var restVal = Number($inputRest.val());
+    if (isNaN(restVal) || restVal <= 1) {
+        console.log("special case minus");
+        $inputRest.val(0.5);
+    } else if (restVal < 6){
+        $inputRest.val(restVal - 1);
+    } else {
+        if (restVal % 5 == 0) { $inputRest.val(restVal - 5); }
+        else { $inputRest.val(restVal - (restVal % 5)); }
+    }
+});
+
+$('#btnRestPlus').click(function() {
+    var restVal = Number($inputRest.val());
+    if (isNaN(restVal)) {
+        console.log("special case plus");
+        $inputRest.val(0.5);
+    } else if (restVal < 11){
+        $inputRest.val(restVal - (restVal % 1) + 1);
+    } else if (restVal < 3596){
+        $inputRest.val(restVal - (restVal % 5) + 5);
+    } else {
+        $inputRest.val(3600);
+    }
+});
+
+
+function customModeUiUpdate(){
+ if ($currentMode.val() == 999 && currentState == "INIT") {
+        $('.normalMode').hide();
+        $('.customMode').show();
+    } else {
+        $('.customMode').hide();
+        $('.normalMode').show();
+    }
+}
+
+function validateMode() {
+    if ($currentMode.val() == 999) {
+        var isValid = true;
+        if (isNaN($inputWork.val()) || $inputWork.val() <= 0 || $inputWork.val() > 3600) {
+            $($inputWork.parent()).addClass('has-error');
+            isValid = false;
+        } else {
+            $($inputWork.parent()).removeClass('has-error');
+        }
+        if (isNaN($inputRest.val()) || $inputRest.val() <= 0 || $inputRest.val() > 3600) {
+            $($inputRest.parent()).addClass('has-error');
+            isValid = false;
+        } else {
+            $($inputRest.parent()).removeClass('has-error');
+        }
+        if (!isValid) { return false; }
+    } 
+    mode.setMode();
+    return true;
+}
+        
+/* ------------------- */
+
+
+
+
 $('#btnStart').click(function(e) {
-    startWork();
+    if (validateMode()) {  startWork(); }
 });
 $('#btnReset').click(function(e) {
     resetToInit();
@@ -100,7 +195,9 @@ function Mode(){
 
 	this.setMode = function(){
 		var m = $currentMode.val();
-
+            
+        customModeUiUpdate();
+        
 		if (m == 0){
 			this.work = 5;
 			this.rest = 5;
@@ -115,10 +212,15 @@ function Mode(){
 		} else if (m == 605) {
             this.work = 3600;
             this.rest = 300;
-		} else {
+		} else if (m == 999) {
+            this.work = Math.floor($inputWork.val() * 60);
+            this.rest = Math.floor($inputRest.val() * 60);
+            console.log("Custom Mode: " + this.work + " " + this.rest);
+        }
+        else {
 		    console.error("ERROR! Unknown mode " + m);
             this.work = 60;
-            this.rest = 60;
+            this.rest = 5;
 		}
 
 		updateClock(mode.work);
@@ -171,8 +273,8 @@ function clearCallback(wasCleared) {
 
 /*===== Interface utils =====*/
 
-function setTheme(layoutClass) {
-    $('body').attr( "class", layoutClass );
+function setTheme(state) {
+    $('body').attr( "class", state + "Layout" );
 };
 
 function goToScreen(screen){
@@ -197,13 +299,15 @@ function updateClock(seconds) {
 /*===== Work, Rest, Reminder functions =====*/
 
 function resetToInit(){
-    setTheme('initLayout');
+    updateCurrentState(INIT);
+    customModeUiUpdate();
     updateClock(mode.work);
     timer.init(mode.work, updateClock, startReminder);
 }
 
 function startWork(){
-    setTheme('workLayout');
+    updateCurrentState(WORK);
+    customModeUiUpdate();
 /*    console.log("Work Started! Duration: " + mode.work);*/
     updateClock(mode.work);
     timer.init(mode.work, updateClock, startReminder);
@@ -215,7 +319,7 @@ function startRest(){
     goToScreen('home');
     isMinimized = chrome.app.window.current().isMinimized();
     chrome.app.window.current().focus();
-    setTheme('restLayout');
+    updateCurrentState(REST);
     updateClock(mode.rest);
     timer.init(mode.rest, updateClock, stopRest);
     timer.start();
@@ -233,7 +337,7 @@ function stopRest(){
 
 function startReminder(duration){
     // case for the automatic reminder when a notification is ignored
-    setTheme('reminderLayout');
+    updateCurrentState(REMIND);
 
     if (duration == null) {
         duration = REMINDER_INTERVAL;
@@ -246,5 +350,15 @@ function startReminder(duration){
 /*    console.log("Reminder started for " + duration + " seconds");*/
     timer.start();
 }
+
+function updateCurrentState(newState) {
+    currentState = newState;
+    setTheme(newState);
+}
+
+$(document).keyup(function(e) {
+  if (e.keyCode == 27 && currentState == REST) { console.log("ESC Presssed, current state: " + currentState);
+                       stopRest();}
+});
 
 /*===========================*/

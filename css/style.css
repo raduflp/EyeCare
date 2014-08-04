@@ -86,7 +86,7 @@ p {
     margin-bottom: 20px;
 }
 
-.ec-settings{
+.ec-settings {
     position: absolute;
     top: 25px;
     right: 5px;
@@ -146,6 +146,34 @@ p {
     transition: font 0.25s;
 }
 
+.customMode {
+    display: none;
+    margin-top: 3px;
+    margin-bottom: 9px;
+}
+
+.customMode a,
+.customMode input {
+    display: inline-block;
+}
+
+.customMode a {
+    padding: 5px 7px;
+    border-radius: 20px;
+}
+
+.customMode input {
+    width: 65px;
+    text-align: center;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+/*.customMode a .glyphicon {
+    margin-left: 0px;   
+}*/
+
+
 /* Custom FlatUI */
 
     .btn-success{
@@ -153,6 +181,14 @@ p {
     }
     .btn-success:hover{
         background-color: #7DBA62;
+    }
+
+    .btn-info {
+        background-color: #5B93BB;
+    }
+
+    .form-control:focus {
+        border-color: #5B93BB;
     }
 
     /* Mode Selector Styles */
@@ -231,15 +267,15 @@ p {
     }
 
 
-        .ec-sound-on,
-        .ec-sound-off {
-          font-size: 13px;
-          margin-left: 6px;
-        }
+.ec-sound-on,
+.ec-sound-off {
+  font-size: 13px;
+  margin-left: 6px;
+}
 
-        .ec-sound-off {
-          display: none;
-        }
+.ec-sound-off {
+  display: none;
+}
 
 
 
