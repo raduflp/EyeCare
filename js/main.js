@@ -1,12 +1,12 @@
 // The interval at which the reminding notifications are displayed
-/*REMINDER_INTERVAL = 45;*/
+/*var REMINDER_INTERVAL = 45;*/
 var REMINDER_INTERVAL = 10;
-var INIT = "init", WORK = "work", REST = "rest", REMIND = "reminder"; 
+var INIT = "init", WORK = "work", REST = "rest", REMIND = "reminder";
 
 var soundsON = true;
 var isMinimized;
 var notId = 1;
-var currentState; 
+var currentState;
 
 var customWork, customRest;
 var $currentMode = $('.pager .selected');
@@ -21,47 +21,46 @@ timer.init(mode.work, updateClock, startReminder);
 
 updateCurrentState(INIT);
 
-$('#btnMenuReset').click(function(e) {
+$('#btnMenuReset').click(function (e) {
     resetToInit();
     goToScreen('home');
 });
-$('#btnMenuSounds').click(function(e) {
+
+$('#btnMenuSounds').click(function (e) {
     if (soundsON) {
-      soundsON = false;
-      $('.ec-sound-on').hide();
-      $('.ec-sound-off').show();
+        soundsON = false;
+        $('.ec-sound-on').hide();
+        $('.ec-sound-off').show();
     } else {
-      soundsON = true;
-      $('.ec-sound-off').hide();
-      $('.ec-sound-on').show();
+        soundsON = true;
+        $('.ec-sound-off').hide();
+        $('.ec-sound-on').show();
     }
 });
 
-$('#btnMenuHome').click(function(e) {
+$('#btnMenuHome').click(function (e) {
     goToScreen('home');
 });
-$('#btnMenuAbout').click(function(e) {
+$('#btnMenuAbout').click(function (e) {
     goToScreen('about');
 });
-$('#btnAboutBack').click(function(e) {
+$('#btnAboutBack').click(function (e) {
     goToScreen('home');
 });
 
-$('#hrefMayo1').click(function(e) {
+$('#hrefMayo1').click(function (e) {
     window.open('http://www.mayoclinic.org/diseases-conditions/eyestrain/basics/prevention/con-20032649');
 });
 
-$('#hrefGithub1').click(function(e) {
+$('#hrefGithub1').click(function (e) {
     window.open('https://github.com/RaduFi');
 });
 
 
 /* Mode carousel functions */
-$('#prevMode').click(function(e) {
+$('#prevMode').click(function (e) {
     var $prevMode = $currentMode.prev('.item');
-    if ($prevMode.size() == 0){
-            $prevMode = $('.pager li.item').last();
-        }
+    if ($prevMode.size() == 0){ $prevMode = $('.pager li.item').last(); }
     $currentMode.removeClass('selected');
     $prevMode.addClass('selected');
     $currentMode = $prevMode;
@@ -69,11 +68,9 @@ $('#prevMode').click(function(e) {
     timer.init(mode.work, updateClock, startReminder);
 /*    console.log("prev mode: " + $prevMode.val());*/
 });
-$('#nextMode').click(function(e) {
+$('#nextMode').click(function (e) {
     var $nextMode = $currentMode.next('.item');
-    if ($nextMode.size() == 0){
-        $nextMode = $('.pager li.item').first();
-    }
+    if ($nextMode.size() == 0){ $nextMode = $('.pager li.item').first(); }
     $currentMode.removeClass('selected');
     $nextMode.addClass('selected');
     $currentMode = $nextMode;
@@ -83,61 +80,40 @@ $('#nextMode').click(function(e) {
 
 
 // Custom Mode UI
-$('#btnWorkMinus').click(function() {
+$('#btnWorkMinus').click(function () {
     var workVal = Number($inputWork.val());
-    if (isNaN(workVal) || workVal <= 1) {
-        console.log("special case minus");
-        $inputWork.val(1);
-    } else if (workVal < 6){
-        $inputWork.val(workVal - 1);
-    } else {
-        if (workVal % 5 == 0) { $inputWork.val(workVal - 5); }
-        else { $inputWork.val(workVal - (workVal % 5)); }
-    }
+    if (isNaN(workVal) || workVal <= 1) { $inputWork.val(1); }
+    else if (workVal < 6){ $inputWork.val(workVal - 1); }
+    else if (workVal % 5 == 0) { $inputWork.val(workVal - 5); }
+    else { $inputWork.val(workVal - (workVal % 5)); }
 });
 
-$('#btnWorkPlus').click(function() {
+$('#btnWorkPlus').click(function () {
     var workVal = Number($inputWork.val());
-    if (isNaN(workVal)) {
-        console.log("special case plus");
-        $inputWork.val(1);
-    } else if (workVal < 3596){
-        $inputWork.val(workVal - (workVal % 5) + 5);
-    } else {
-        $inputWork.val(3600);
-    }
+    if (isNaN(workVal)) { $inputWork.val(1); }
+    else if (workVal < 3596){ $inputWork.val(workVal - (workVal % 5) + 5); } 
+    else { $inputWork.val(3600); }
 });
 
 $('#btnRestMinus').click(function() {
     var restVal = Number($inputRest.val());
-    if (isNaN(restVal) || restVal <= 1) {
-        console.log("special case minus");
-        $inputRest.val(0.5);
-    } else if (restVal < 6){
-        $inputRest.val(restVal - 1);
-    } else {
-        if (restVal % 5 == 0) { $inputRest.val(restVal - 5); }
-        else { $inputRest.val(restVal - (restVal % 5)); }
-    }
+    if (isNaN(restVal) || restVal <= 1) { $inputRest.val(0.5); }
+    else if (restVal < 6) { $inputRest.val(restVal - 1); }
+    else if (restVal % 5 == 0) { $inputRest.val(restVal - 5); } 
+    else { $inputRest.val(restVal - (restVal % 5)); }
 });
 
 $('#btnRestPlus').click(function() {
     var restVal = Number($inputRest.val());
-    if (isNaN(restVal)) {
-        console.log("special case plus");
-        $inputRest.val(0.5);
-    } else if (restVal < 11){
-        $inputRest.val(restVal - (restVal % 1) + 1);
-    } else if (restVal < 3596){
-        $inputRest.val(restVal - (restVal % 5) + 5);
-    } else {
-        $inputRest.val(3600);
-    }
+    if (isNaN(restVal)) { $inputRest.val(0.5); }
+    else if (restVal < 11) { $inputRest.val(restVal - (restVal % 1) + 1); }
+    else if (restVal < 3596) { $inputRest.val(restVal - (restVal % 5) + 5); }
+    else { $inputRest.val(3600); }
 });
 
 
 function customModeUiUpdate(){
- if ($currentMode.val() == 999 && currentState == "INIT") {
+ if ($currentMode.val() == 999 && currentState == INIT) {
         $('.normalMode').hide();
         $('.customMode').show();
     } else {
@@ -219,8 +195,8 @@ function Mode(){
         }
         else {
 		    console.error("ERROR! Unknown mode " + m);
-            this.work = 60;
-            this.rest = 5;
+            this.work = 1200;
+            this.rest = 60;
 		}
 
 		updateClock(mode.work);
@@ -357,8 +333,7 @@ function updateCurrentState(newState) {
 }
 
 $(document).keyup(function(e) {
-  if (e.keyCode == 27 && currentState == REST) { console.log("ESC Presssed, current state: " + currentState);
-                       stopRest();}
+  if (e.keyCode == 27 && currentState == REST) { stopRest(); }
 });
 
 /*===========================*/
