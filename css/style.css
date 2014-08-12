@@ -3,40 +3,117 @@
     height: 25px;
     position: fixed;
     width: 100%;
-    background-color: #344459;
-    font-family: Webdings;
-    text-align: right;
     font-size: 12px;
     margin: 0;
     padding: 0;
 }
 
+    .frame.os-win {
+        background-color: #344459;
+    }
+
+    .frame.os-lnx {
+        background-color: #4C4A44;
+    }
+
+    .frame.os-mac {
+        background-color: #B5B5B5;
+    }
+    
     .frame a {
         -webkit-app-region: no-drag;
         color: #9f9f9f;
         text-decoration: none;
         display: inline-block;
         text-align: center;
-        height: 100%;
-        width: 28px;
-        margin: 0;
-        padding-top: 2px;
+
     }
 
+        .frame.os-win a {
+            height: 100%;
+            width: 28px;
+            margin: 0;
+            padding-top: 2px;
+        }
+
+        .frame.os-lnx a,
+        .frame.os-mac a {
+            height: 18px;
+            width: 18px;
+            border-radius: 10px;
+            margin-top: 4px;
+            margin-left: 4px;
+            background-color: #75746D;
+        }
+
+        .frame.os-mac a {
+            background-color: transparent;
+            border-style: solid;
+            border-width: 2px;
+        }
+
         .frame a:hover {
-            color: gray;
-            background-color: #485F73;
             cursor: default;
         }
 
-    .frame .ec-title{
+            .frame.os-win a:hover {
+                background-color: #485F73;
+            }
+
+            .frame.os-lnx a:hover,
+            .frame.os-mac a:hover {
+                background-color: #C0C0C0;
+            }
+
+            .frame.os-mac a:hover img {
+                opacity: 1;
+            }
+
+    
+        .frame.os-win a img {
+            width: 10px;
+            height: 10px;
+        }
+
+        .frame.os-lnx a img,
+        .frame.os-mac a img {
+            width: 8px;
+            height: 8px;
+            margin-bottom: 3px;
+        }
+
+        .frame.os-mac a img {
+            opacity: 0;
+            transition: opacity 0.30s;
+            margin-bottom: 7px;
+        }
+
+    .frame .ec-title {
         margin-top: -2px;
         margin-left: 3px;
         float: left;
-        font-family: Lato, Helvetica, Arial, sans-serif;
         font-size: 18px;
         font-weight: bold;
         color: #EFECE3;
+    }
+
+        .frame.os-lnx .ec-title,
+        .frame.os-mac .ec-title {
+            margin-left: 100px;
+        }
+
+        
+
+    .frame.os-win .ec-controls {
+        height: 100%;
+        float: right;
+    }
+
+    .frame.os-lnx .ec-controls,
+    .frame.os-mac .ec-controls{
+        height: 100%;
+        float: left;
+        direction: rtl;
     }
 
 
@@ -46,25 +123,65 @@
         margin: 0 5px 3px 0;
     }
 
-#window-close {
+.os-win #window-close {
     width: 48px;
-    color: #FFFFFF;
     background-color: #C75050;
 }
-#window-close:hover {
+.os-win #window-close:hover {
     background-color: #E04343;
 }
 
-#window-minimize{
-    color: #CCCCCC;
-    width: 24px;
-    transform: scale(1.5,1);
-    margin-right: 2px;
+.os-win #window-minimize {
+    margin-right: 1px;
 }
-#window-minimize:hover{
-    color: #FFFFFF;
+
+.os-win #window-minimize:hover {
     background-color: #485F73; /*#3665B3;*/
 }
+
+.os-win #window-minimize img {
+    width: 15px;
+}
+
+.os-lnx #window-close {
+    background-color: #E55E30;
+}
+
+.os-lnx #window-close:hover {
+    background-color: #F17750;
+}
+
+.os-lnx #window-minimize img {
+    width: 10px;
+    margin-bottom: 8px;
+}
+
+
+.os-mac #window-close {
+    border-color: #F75651;
+}
+
+.os-mac #window-close:hover {
+    border-color: #FD7E7A;
+    background-color: #FD7E7A;
+}
+
+.os-mac #window-minimize {
+    border-color: #F3BB65;
+}
+
+.os-mac #window-minimize img {
+    width: 10px;
+    margin-bottom: 12px;
+}
+
+.os-mac #window-minimize:hover {
+    border-color: #FCD378;
+    background-color: #FCD378;
+}
+
+
+
 
 .container {
     margin-top: 25px;

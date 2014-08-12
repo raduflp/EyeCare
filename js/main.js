@@ -19,6 +19,16 @@ mode.setMode();
 var timer = new Timer();
 timer.init(mode.work, updateClock, startReminder);
 
+var platform = navigator.platform;
+
+if (/mac/i.test(platform))
+    $(".frame").addClass("os-mac");
+else if (/linux/i.test(platform)) {
+    $(".frame").addClass("os-lnx");
+} else {
+    $(".frame").addClass("os-win");
+}
+
 updateCurrentState(INIT);
 
 $('#btnMenuReset').click(function (e) {
@@ -191,7 +201,7 @@ function Mode(){
 		} else if (m == 999) {
             this.work = Math.floor($inputWork.val() * 60);
             this.rest = Math.floor($inputRest.val() * 60);
-            console.log("Custom Mode: " + this.work + " " + this.rest);
+            /*console.log("Custom Mode: " + this.work + " " + this.rest);*/
         }
         else {
 		    console.error("ERROR! Unknown mode " + m);
