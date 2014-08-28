@@ -1,3 +1,36 @@
+// frame style and buttons
+var platform = navigator.platform;
+var winWidth = 400, winWidthCompact = 225,
+    winHeight = 235, winHeightCompact = 140;
+
+if (/mac/i.test(platform))
+    $(".frame").addClass("os-mac");
+else if (/linux/i.test(platform)) {
+    $(".frame").addClass("os-lnx");
+} else {
+    $(".frame").addClass("os-win");
+}
+
+$('#window-maximize').hide();
+chrome.app.window.current().resizeTo(winWidth, winHeight);
+
+$('#window-minimize').click(function(e) { chrome.app.window.current().minimize(); });
+$('#window-close').click(function(e) { window.close(); });
+
+$('#window-maximize').click(function(e) { 
+    $('#window-maximize').hide();
+    $('#window-restore').show();
+    $("body").removeClass("compact");
+    chrome.app.window.current().resizeTo(winWidth, winHeight);
+});
+
+$('#window-restore').click(function(e) { 
+    $('#window-restore').hide();
+    $('#window-maximize').show();
+    $("body").addClass("compact");
+    chrome.app.window.current().resizeTo(winWidthCompact, winHeightCompact);
+});
+
 // The interval at which the reminding notifications are displayed
 /*var REMINDER_INTERVAL = 45;*/
 var REMINDER_INTERVAL = 10;
@@ -18,16 +51,6 @@ mode.setMode();
 
 var timer = new Timer();
 timer.init(mode.work, updateClock, startReminder);
-
-var platform = navigator.platform;
-
-if (/mac/i.test(platform))
-    $(".frame").addClass("os-mac");
-else if (/linux/i.test(platform)) {
-    $(".frame").addClass("os-lnx");
-} else {
-    $(".frame").addClass("os-win");
-}
 
 updateCurrentState(INIT);
 
@@ -260,7 +283,8 @@ function clearCallback(wasCleared) {
 /*===== Interface utils =====*/
 
 function setTheme(state) {
-    $('body').attr( "class", state + "Layout" );
+    $('body').removeClass("initLayout workLayout restLayout reminderLayout");
+    $('body').addClass(state + "Layout");
 };
 
 function goToScreen(screen){

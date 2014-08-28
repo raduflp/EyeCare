@@ -1,0 +1,182 @@
+.compact .frame {
+    height: 22px;
+}
+
+.compact .frame.os-win a {
+    padding-top: 0px;
+}
+
+
+.compact .frame .ec-title {
+    font-size: 14px;
+}
+
+.compact #ec-version {
+    display: none;
+}
+
+
+
+.compact .col-xs-1 {
+  display: none;
+}
+
+.compact .col-xs-5,
+.compact .col-xs-10,
+.compact .col-xs-12 {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.compact .col-xs-10,
+.compact .col-xs-12 {
+    width: 100%;
+}
+
+.compact .col-xs-5 {
+    width: 50%;
+}
+
+.compact .ec-settings,
+.compact .btn-lg,
+.compact .pager
+{
+    font-size: 12px;
+}
+
+.compact .ec-settings {
+    top: 20px;
+    right: 2px;
+}
+    
+    .compact .dropdown-menu {
+        padding-top: 2px;
+        padding-bottom: 3px;
+        min-width: 100px;
+        margin-left: -104px;
+        margin-top: -16px !important;
+    }
+
+    .compact .open .dropdown-menu {
+        margin-left: -114px;
+        margin-top: -16px !important;
+    }
+
+    .compact .dropdown-menu li > a,
+    .compact .dropdown-inverse li:first-child > a, 
+    .compact .dropdown-inverse li:last-child > a {
+        font-size: 11px;
+        padding: 3px 6px 5px;
+    }
+
+    .compact .dropdown-arrow {
+        right: 10px;
+        border-width: 5px 0px 5px 6px;
+    }
+
+    .compact .open .dropdown-arrow {
+        right: 20px;
+        margin-top: 5px;
+    }
+
+
+
+.compact .pager {
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+
+    .compact .pager li.item {
+        padding: 3px 3px;
+    }
+
+    .compact .pager li > a {
+        padding: 6px 7px 5px;
+    }
+
+.compact .customMode {
+    margin-top: 0px;
+    margin-bottom: 3px;
+    line-height: 2.15;
+}
+
+    .compact .customMode .form-control {
+        font-size: 11px;
+        height: 26px;
+        width: 40px;
+    }
+
+    .compact .customMode .btn {
+        font-size: 11px;
+    }
+
+    .compact .customMode a {
+        padding: 4px 5px;
+        border-radius: 15px;
+    }
+
+    .compact .customMode .glyphicon-minus {
+        top: 2px;
+        right: 1px;
+    }
+
+
+.compact .tDisplay {
+    font-size: 36px;
+    line-height: 1.7;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-weight: bold;
+}
+
+.compact.workLayout .tDisplay {
+    line-height: 2.3;
+}
+
+.compact.initLayout .tDisplay {
+    line-height: 1.15;
+}
+
+.compact.restLayout .tDisplay {
+    font-size: 55px;
+}
+
+
+.compact .ec-back {
+    font-size: 12px;
+    top: 20px;
+}
+
+.compact .ec-page-title {
+    margin: 3px 0 0px;
+    font-size: 16px
+}
+
+.compact p {
+    font-size: 13px;
+    line-height: 1;
+    margin-bottom: 0px;
+}
+
+.compact .btn-block+.btn-block {
+    margin-top: 0px;
+}
+
+.compact .btn-lg {
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+.compact .row.ec-remind {
+    line-height: 1;
+}
+
+
+.compact .ec-title-remind {
+    font-size: 12px;
+}
+
+.compact .btn-xs {
+    font-size: 11px;
+    padding: 4px 8px;
+}

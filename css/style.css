@@ -232,6 +232,16 @@ p {
     font: bold 18px/18px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+#ec-version {
+    position: absolute;
+    top: -25px;
+    left: 113px;
+    font-family: Lato, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #EFECE3;
+}
+
 .ec-copyright {
     margin-top: 29px;
     font: italic 14px/14px "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -245,27 +255,22 @@ p {
         color: #2a6496;
     }
 
-.ec-version {
-    position: absolute;
-    top: -25px;
-    left: 113px;
-    font-size: 16px;
-    font-weight: bold;
-    font-family: Lato, Helvetica, Arial, sans-serif;
-    color: #EFECE3;
-}
+
 
 
 .tDisplay{
-    font: 900 55px/55px "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin-top: 38px;
-    margin-bottom: 27px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 55px;
+    font-weight: bold;
+/*    margin-top: 38px;
+    margin-bottom: 27px;*/
     transition: font 0.25s;
+    line-height: 2.2;
 }
 
 .customMode {
     display: none;
-    margin-top: 3px;
+    margin-top: 9px;
     margin-bottom: 9px;
 }
 
@@ -312,7 +317,7 @@ p {
     .pager{
         width: 100%;
         margin-top: 25px;
-        margin-bottom: 5px;
+        margin-bottom: 0px;
         /* background-color: #E27A3F; */
         /* background-color: #524549; */
         /* background-color: #704A5B; */
@@ -398,61 +403,66 @@ p {
 
 
 /* Initial Layout styles */
-.initLayout{
+.initLayout {
 
 }
-    .initLayout .tDisplay{
-        font: 900 32px/40px "Helvetica Neue", Helvetica, Arial, sans-serif;
-        margin: 4px 0px 10px 0px;
+    .initLayout .tDisplay {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 40px;
+        font-weight: bold;
+        /*margin: 4px 0px 10px 0px;*/
+        line-height: 1.5;
     }
 
 
 
 /* Work Layout styles */
-.workLayout{
+.workLayout {
 	color: #545454;
 /*	background: #E2FAB7;*/
 }
 
 /* Reminder Layout styles */
-.reminderLayout{
+.reminderLayout {
     color: #545454;
 /*	background: #FFC0C0;*/
 }
 
-    div.row.ec-remind{
+    div.row.ec-remind {
          margin-top: 3px;
      }
 
-    .ec-title-remind{
+    .ec-title-remind {
         display: inline-block;
         padding-right: 4px;
-        font: 600 15px/18px "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 15px;
+        font-weight: bold;
     }
 
 /* Rest Layout styles */
-.restLayout{
+.restLayout {
 	color: #222;
 	background: #111;
 }
-    .restLayout .container{
+    .restLayout .container {
         width: 100%;
     }
 
-    .restLayout  .col-xs-12{
+    .restLayout  .col-xs-12 {
         padding: 0px;
         position: absolute;
         height: 100%;
     }
 
-    .restLayout .tDisplay{
+    .restLayout .tDisplay {
         display: block;
         position: absolute;
         width: 100%;
         top: 40%;
     }
 
-    .restLayout .btn-inverse{
+    .restLayout .btn-inverse {
         background-color: #333;
         color: #000;
         position: absolute;

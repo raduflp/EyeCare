@@ -6,11 +6,12 @@
   <link href="flat-ui/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="flat-ui/css/flat-ui.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+  <link href="css/style-compact.css" rel="stylesheet">
 </head>
 <body>
   <div class="frame">
       <div class="ec-controls">
-        <a href="#" id="window-minimize" title="Minimize"><img src="images/win_min_white.png"/></a><a href="#" id="window-close" title="Close"><img src="images/win_close_white.png"/></a>
+        <a href="#" id="window-maximize" title="Expanded"><img src="images/win-expanded-white.png"/></a><a href="#" id="window-restore" title="Compact"><img src="images/win-compact-white.png"/></a><a href="#" id="window-minimize" title="Minimize"><img src="images/win_min_white.png"/></a><a href="#" id="window-close" title="Close"><img src="images/win_close_white.png"/></a>
       </div>
       
       <div class="ec-title"><img class="icon-small" src="images/icon48_light.png"/> Eye Care</div>
@@ -57,18 +58,14 @@
       <div class="row text-center customMode">
           <div class="col-xs-1"></div>
           <div class="col-xs-5">
-              <div>       
-                  <a id="btnWorkMinus" class="btn btn-info" href="#"><span class="fui-- glyphicon glyphicon-minus"></span></a>
-                  <input id="inputWork" type="text" value="" placeholder="work" class="form-control" pattern="[0-9]{4}">
-                  <a id="btnWorkPlus" class="btn btn-info" href="#"><span class="fui-plus"></span></a>
-              </div>
+              <a id="btnWorkMinus" class="btn btn-info" href="#"><span class="fui-- glyphicon glyphicon-minus"></span></a>
+              <input id="inputWork" type="text" value="" placeholder="work" class="form-control" pattern="[0-9]{4}">
+              <a id="btnWorkPlus" class="btn btn-info" href="#"><span class="fui-plus"></span></a>
           </div>
-          <div class="col-xs-5">
-              <div>       
-                  <a id="btnRestMinus" class="btn btn-info" href="#"><span class="fui-- glyphicon glyphicon-minus"></span></a>
-                  <input id="inputRest" type="text" value="" placeholder="rest" class="form-control">
-                  <a id="btnRestPlus" class="btn btn-info" href="#"><span class="fui-plus"></span></a>
-              </div>
+          <div class="col-xs-5">       
+              <a id="btnRestMinus" class="btn btn-info" href="#"><span class="fui-- glyphicon glyphicon-minus"></span></a>
+              <input id="inputRest" type="text" value="" placeholder="rest" class="form-control">
+              <a id="btnRestPlus" class="btn btn-info" href="#"><span class="fui-plus"></span></a>
           </div>
       </div>
       <div class="row text-center">
@@ -94,7 +91,7 @@
     <div class="ec-back"><a id="btnAboutBack" class="ec-btnBack" href="#"><span class="fui-arrow-left"></span></a></div>
     <div class="row text-center">
       <div class="col-xs-12">
-        <div class="ec-version"> v 1.0.5</div>
+        <div id="ec-version"> v 2.0</div>
         <div class="ec-page-title">About</div>
         <p><strong>Eye Care</strong> helps you maintain a healthy lifestyle when working long hours in front of the screen. Regular breaks combined with eye exercises and moderate movement are crucial to prevent eyestrain, backpain and other health issues. <a id="hrefMayo1" href="#">more...</a>
         </p>
@@ -119,7 +116,6 @@
 
     <script src="flat-ui/js/application.js"></script>
 
-    <script type="text/javascript" src="js/frame.js"></script>
 	<script type="text/javascript" src="js/timer.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 </html>
