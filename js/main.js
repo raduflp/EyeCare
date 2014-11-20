@@ -11,22 +11,22 @@ else if (/linux/i.test(platform)) {
     $(".frame").addClass("os-win");
 }
 
-$('#window-maximize').hide();
+$('#window-expand').hide();
 chrome.app.window.current().resizeTo(winWidth, winHeight);
 
 $('#window-minimize').click(function(e) { chrome.app.window.current().minimize(); });
 $('#window-close').click(function(e) { window.close(); });
 
-$('#window-maximize').click(function(e) { 
-    $('#window-maximize').hide();
-    $('#window-restore').show();
+$('#window-expand').click(function(e) {
+    $('#window-expand').hide();
+    $('#window-compact').show();
     $("body").removeClass("compact");
     chrome.app.window.current().resizeTo(winWidth, winHeight);
 });
 
-$('#window-restore').click(function(e) { 
-    $('#window-restore').hide();
-    $('#window-maximize').show();
+$('#window-compact').click(function(e) {
+    $('#window-compact').hide();
+    $('#window-expand').show();
     $("body").addClass("compact");
     chrome.app.window.current().resizeTo(winWidthCompact, winHeightCompact);
 });
@@ -124,7 +124,7 @@ $('#btnWorkMinus').click(function () {
 $('#btnWorkPlus').click(function () {
     var workVal = Number($inputWork.val());
     if (isNaN(workVal)) { $inputWork.val(1); }
-    else if (workVal < 3596){ $inputWork.val(workVal - (workVal % 5) + 5); } 
+    else if (workVal < 3596){ $inputWork.val(workVal - (workVal % 5) + 5); }
     else { $inputWork.val(3600); }
 });
 
@@ -132,7 +132,7 @@ $('#btnRestMinus').click(function() {
     var restVal = Number($inputRest.val());
     if (isNaN(restVal) || restVal <= 1) { $inputRest.val(0.5); }
     else if (restVal < 6) { $inputRest.val(restVal - 1); }
-    else if (restVal % 5 == 0) { $inputRest.val(restVal - 5); } 
+    else if (restVal % 5 == 0) { $inputRest.val(restVal - 5); }
     else { $inputRest.val(restVal - (restVal % 5)); }
 });
 
@@ -171,11 +171,11 @@ function validateMode() {
             $($inputRest.parent()).removeClass('has-error');
         }
         if (!isValid) { return false; }
-    } 
+    }
     mode.setMode();
     return true;
 }
-        
+
 /* ------------------- */
 
 
@@ -204,14 +204,14 @@ function Mode(){
 
 	this.setMode = function(){
 		var m = $currentMode.val();
-            
+
         customModeUiUpdate();
-        
+
 		if (m == 0){
 			this.work = 5;
 			this.rest = 5;
-		} else 
-        
+		} else
+
         if (m == 201){
 			this.work = 1200;
 			this.rest = 60;
@@ -253,7 +253,7 @@ function notify(){
 	opt.buttons = [];
 	opt.buttons.push({ title: 'Take a break' });
 	opt.buttons.push({ title: 'In a few minutes' });
-    
+
     chrome.notifications.clear('ec' + (notId - 1), clearCallback);
     chrome.notifications.create('ec' + notId++, opt, creationCallback);
     if (soundsON){ $('#audioNotif').trigger('play'); }

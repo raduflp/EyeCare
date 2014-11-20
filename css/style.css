@@ -19,7 +19,35 @@
     .frame.os-mac {
         background-color: #B5B5B5;
     }
-    
+
+
+    /* --------- Frame Title Styles --------- */
+
+    .frame .ec-title {
+        margin-top: -2px;
+        margin-left: 3px;
+        float: left;
+        font-size: 18px;
+        font-weight: bold;
+        color: #EFECE3;
+    }
+
+        .frame.os-lnx .ec-title,
+        .frame.os-mac .ec-title {
+            margin-left: 85px;
+        }
+
+        .frame.os-mac .ec-title,
+        .frame.os-mac .ec-version {
+            color: #444;
+        }
+
+        .frame.os-mac .ec-title img {
+            -webkit-filter: invert(80%);
+        }
+
+
+    /* --------- Control Buttons Styles --------- */
     .frame a {
         -webkit-app-region: no-drag;
         color: #9f9f9f;
@@ -47,7 +75,7 @@
         }
 
         .frame.os-mac a {
-            background-color: transparent;
+            /*background-color: transparent;*/
             border-style: solid;
             border-width: 2px;
         }
@@ -65,11 +93,11 @@
                 background-color: #C0C0C0;
             }
 
-            .frame.os-mac a:hover img {
+            .frame.os-mac .ec-controls:hover img {
                 opacity: 1;
             }
 
-    
+
         .frame.os-win a img {
             width: 10px;
             height: 10px;
@@ -84,25 +112,10 @@
 
         .frame.os-mac a img {
             opacity: 0;
-            transition: opacity 0.30s;
             margin-bottom: 7px;
+            -webkit-filter: invert(80%);
         }
 
-    .frame .ec-title {
-        margin-top: -2px;
-        margin-left: 3px;
-        float: left;
-        font-size: 18px;
-        font-weight: bold;
-        color: #EFECE3;
-    }
-
-        .frame.os-lnx .ec-title,
-        .frame.os-mac .ec-title {
-            margin-left: 100px;
-        }
-
-        
 
     .frame.os-win .ec-controls {
         height: 100%;
@@ -136,7 +149,7 @@
 }
 
 .os-win #window-minimize:hover {
-    background-color: #485F73; /*#3665B3;*/
+/*    background-color: #485F73;*/ /*#3665B3;*/
 }
 
 .os-win #window-minimize img {
@@ -148,7 +161,7 @@
 }
 
 .os-lnx #window-close:hover {
-    background-color: #F17750;
+/*    background-color: #F17750;*/
 }
 
 .os-lnx #window-minimize img {
@@ -156,29 +169,37 @@
     margin-bottom: 8px;
 }
 
+/* --- MAC ---*/
+    .os-mac #window-close {
+        border-color: #DF3A3D;
+        background-color: #FB5959;
+    }
 
-.os-mac #window-close {
-    border-color: #F75651;
-}
+    .os-mac #window-close:hover {
+    /*    border-color: #FD7E7A;
+        background-color: #FD7E7A;*/
+    }
 
-.os-mac #window-close:hover {
-    border-color: #FD7E7A;
-    background-color: #FD7E7A;
-}
+    .os-mac #window-minimize {
+        border-color: #DF9C3B;
+        background-color: #FEBA4B;
+    }
 
-.os-mac #window-minimize {
-    border-color: #F3BB65;
-}
+    .os-mac #window-minimize img {
+        width: 10px;
+        margin-bottom: 12px;
+    }
 
-.os-mac #window-minimize img {
-    width: 10px;
-    margin-bottom: 12px;
-}
+    .os-mac #window-minimize:hover {
+    /*    border-color: #FCD378;
+        background-color: #FCD378;*/
+    }
 
-.os-mac #window-minimize:hover {
-    border-color: #FCD378;
-    background-color: #FCD378;
-}
+    .os-mac #window-expand,
+    .os-mac #window-compact {
+        border-color: #338BFF;
+        background-color: #67A9FF;
+    }
 
 
 
@@ -292,7 +313,7 @@ p {
 }
 
 /*.customMode a .glyphicon {
-    margin-left: 0px;   
+    margin-left: 0px;
 }*/
 
 
@@ -356,7 +377,7 @@ p {
         top: 0%;
 
         border-width: 8px 0px 8px 10px;
-        border-color: transparent transparent transparent #34495e; 
+        border-color: transparent transparent transparent #34495e;
     }
 
     .open .dropdown-arrow {
@@ -364,7 +385,7 @@ p {
         margin-top: 7px;
         opacity: 0.85;
     }
-    
+
     .dropdown-inverse {
         background: rgba(52, 73, 94, 0.85);
     }
@@ -378,7 +399,7 @@ p {
         margin-top: -25px !important;
         border-radius: 6px 0px 6px 6px !important;
     }
-    
+
     .dropdown-menu > li {
         text-align: right;
     }

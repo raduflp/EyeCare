@@ -1,15 +1,26 @@
-.compact .frame {
+/*.compact .frame {
     height: 22px;
-}
+}*/
 
-.compact .frame.os-win a {
+/*.compact .frame.os-win a {
     padding-top: 0px;
-}
+}*/
 
 
-.compact .frame .ec-title {
+/*.compact .frame .ec-title {
     font-size: 14px;
 }
+*/
+
+.compact .frame .ec-title {
+    margin-left: 10px;
+}
+
+
+.compact .frame .ec-title img {
+    display: none;
+}
+
 
 .compact #ec-version {
     display: none;
@@ -45,10 +56,10 @@
 }
 
 .compact .ec-settings {
-    top: 20px;
+    top: 22px;
     right: 2px;
 }
-    
+
     .compact .dropdown-menu {
         padding-top: 2px;
         padding-bottom: 3px;
@@ -63,7 +74,7 @@
     }
 
     .compact .dropdown-menu li > a,
-    .compact .dropdown-inverse li:first-child > a, 
+    .compact .dropdown-inverse li:first-child > a,
     .compact .dropdown-inverse li:last-child > a {
         font-size: 11px;
         padding: 3px 6px 5px;
@@ -144,7 +155,7 @@
 
 .compact .ec-back {
     font-size: 12px;
-    top: 20px;
+    top: 22px;
 }
 
 .compact .ec-page-title {
@@ -179,4 +190,12 @@
 .compact .btn-xs {
     font-size: 11px;
     padding: 4px 8px;
+}
+
+.compact .about-compact-hide {
+  display: none;
+}
+
+.compact .ec-copyright {
+  margin-top: 25px;
 }
