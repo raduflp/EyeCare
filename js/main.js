@@ -4,11 +4,11 @@ var winWidth = 400, winWidthCompact = 225,
     winHeight = 235, winHeightCompact = 140;
 
 if (/mac/i.test(platform))
-    $(".frame").addClass("os-mac");
+    $("body").addClass("os-mac");
 else if (/linux/i.test(platform)) {
-    $(".frame").addClass("os-lnx");
+    $("body").addClass("os-lnx");
 } else {
-    $(".frame").addClass("os-win");
+    $("body").addClass("os-win");
 }
 
 $('#window-expand').hide();
