@@ -371,3 +371,41 @@ $(document).keyup(function(e) {
 });
 
 /*===========================*/
+
+
+// Menu Stuff
+
+$('.main-menu').hover(function(e){
+  if (!$('.eq-container').hasClass('visible'))
+    $('.main-menu ul').addClass('visible');
+},function(e){
+  $('.main-menu ul').removeClass('visible');
+});
+
+$('.main-menu li').click(function(e){
+  switch (this.id) {
+   
+    case "m_feedback":
+      window.open('https://chrome.google.com/webstore/detail/eye-care/ingonfahmmfgbamnahjpkccllhpmidcp/reviews');
+      break;
+    // case "m_dark":
+    //   updateTheme(GM_CONST.THEME.DARK);
+    //   break;
+    // case "m_default":
+    //   updateTheme(GM_CONST.THEME.DEFAULT);
+    //   break;
+  }
+  $('.main-menu ul').removeClass('visible');
+});
+
+
+
+
+
+
+
+
+
+
+
+
