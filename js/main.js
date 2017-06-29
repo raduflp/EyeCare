@@ -86,7 +86,7 @@ $('#hrefMayo1').click(function (e) {
 });
 
 $('#hrefGithub1').click(function (e) {
-    window.open('https://github.com/RaduFi');
+    window.open('https://github.com/raduflp');
 });
 
 
@@ -212,13 +212,19 @@ function Mode(){
 			this.rest = 5;
 		} else
 
-        if (m == 201){
-			this.work = 1200;
-			this.rest = 60;
-		} else if (m == 303) {
-			this.work = 1800;
-			this.rest = 180;
-		} else if (m == 605) {
+        if (m == 55){
+			this.work = 300;
+			this.rest = 30;
+		}else if (m == 101) {
+            this.work = 600;
+            this.rest = 120;
+        }else if (m == 201){
+            this.work = 1200;
+            this.rest = 60;
+        }else if (m == 303) {
+            this.work = 1800;
+            this.rest = 180;
+        } else if (m == 605) {
             this.work = 3600;
             this.rest = 300;
 		} else if (m == 999) {
